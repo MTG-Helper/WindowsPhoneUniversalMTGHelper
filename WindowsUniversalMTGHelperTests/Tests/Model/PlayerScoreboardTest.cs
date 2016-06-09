@@ -5,7 +5,7 @@ using WindowsUniversalMTGHelper.Model;
 namespace WindowsUniversalMTGHelperTests
 {
     [TestClass]
-    public class UnitTest1
+    public class PlayerScoreboardTest
     {
         [TestMethod]
         public void TestDadoUnPlayerScoreboardCuandoLePreguntoSusPuntosDeVidaResponde20()
