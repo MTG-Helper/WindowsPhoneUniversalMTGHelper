@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
+using WindowsUniversalMTGHelper.AppModel;
+using WindowsUniversalMTGHelper.Model;
 using WindowsUniversalMTGHelper.Model.VisualRepresentations;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -26,15 +28,17 @@ namespace WindowsUniversalMTGHelper
     public sealed partial class MainPage : Page
     {
 
+        private BoardAppModel boardAppModel;
+
         public MainPage()
         {
+            this.boardAppModel = new BoardAppModel();
             this.InitializeComponent();
         }
 
         private void AddPlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
         {
-
-            PlayerScoreboardPanel.Children.Add(new PlayerScoreboardPostix().getShape());
+            PlayerScoreboardPanel.Children.Add(this.boardAppModel.addAPlayerScoreboard());
         }
 
         private void removePlayerScoreboardButton_Click(object sender, RoutedEventArgs e)

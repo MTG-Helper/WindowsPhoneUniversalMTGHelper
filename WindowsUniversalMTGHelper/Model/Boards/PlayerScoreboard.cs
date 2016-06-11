@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
+using WindowsUniversalMTGHelper.Model.VisualRepresentations;
 
 namespace WindowsUniversalMTGHelper.Model
 {
@@ -12,12 +14,14 @@ namespace WindowsUniversalMTGHelper.Model
         private string playerName;
         private int lifePoints;
         private int poisonPoints;
+        private PlayerScoreboardPostix shape;
 
         public PlayerScoreboard()
         {
             this.playerName = "Foo";
             this.lifePoints = 20;
             this.poisonPoints = 0;
+            this.shape = new PlayerScoreboardPostix(this);
         }
 
 
@@ -35,6 +39,14 @@ namespace WindowsUniversalMTGHelper.Model
         public void addOneLifePoints()
         {
             this.lifePoints++;
+        }
+
+        /// <summary>
+        /// returns the visual representation for a PlayerScoreboard.
+        /// </summary>
+        public Canvas getVisualRepresentation()
+        {
+            return this.shape.getShape();
         }
 
         /// <summary>
@@ -59,6 +71,8 @@ namespace WindowsUniversalMTGHelper.Model
             }
         }
 
+
+
         /// <summary>
         /// Sub X life point to the remaining players's life points.
         /// </summary>
@@ -67,6 +81,30 @@ namespace WindowsUniversalMTGHelper.Model
             for (int i = 0; i < numberOfLifePoints; i++)
             {
                 this.subOneLifePoints();
+            }
+        }
+
+        /// <summary>
+        /// Add X poison point to the remaining players's life points.
+        /// </summary>
+        private void addXPoisonPoints(int numberOfLifePoints)
+        {
+            for (int i = 0; i < numberOfLifePoints; i++)
+            {
+                this.addOnePoisonPoint();
+            }
+        }
+
+
+
+        /// <summary>
+        /// Sub X poison point to the remaining players's life points.
+        /// </summary>
+        private void subXPoisonPoints(int numberOfLifePoints)
+        {
+            for (int i = 0; i < numberOfLifePoints; i++)
+            {
+                this.subOnePoisonPoint();
             }
         }
 
@@ -85,6 +123,7 @@ namespace WindowsUniversalMTGHelper.Model
         {
             this.subXLifePoints(5);
         }
+
 
         /// <summary>
         /// Returns the remaining players's poison points.
@@ -111,6 +150,22 @@ namespace WindowsUniversalMTGHelper.Model
             {
                 this.poisonPoints--;
             }
+        }
+
+        /// <summary>
+        /// Add five poison point to the remaining players's life points.
+        /// </summary>
+        public void addFivePoisonPoints()
+        {
+            this.addXPoisonPoints(5);
+        }
+
+        /// <summary>
+        /// Sub five poison point to the remaining players's life points.
+        /// </summary>
+        public void subFivePoisonPoints()
+        {
+            this.subXPoisonPoints(5);
         }
 
         /// <summary>
