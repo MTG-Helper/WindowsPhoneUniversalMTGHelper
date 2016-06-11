@@ -5,10 +5,14 @@
     xmlns:local="using:WindowsUniversalMTGHelper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="317.667">
+    mc:Ignorable="d" Width="317.667" Height="543">
 
     <Grid Background="Green">
-        <StackPanel x:Name="PlayerScoreboardPanel" Margin="10,102,10,70"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="565*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="PlayerScoreboardPanel" Margin="10,102,10,83"/>
         <TextBlock x:Name="ScoreboardTitleTextblock" Margin="116,10,60,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="MTG-Helper Scoreboard" FontWeight="Bold" FontFamily="Arial Black" SelectionHighlightColor="#FF36958C">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,20 +22,14 @@
             </TextBlock.Foreground>
         </TextBlock>
         <Button x:Name="AddPlayerScoreboardButton" Content="+" Margin="95,57,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20" Height="40" Width="46" Click="AddPlayerScoreboardButton_Click"/>
-        <TextBlock x:Name="AddPlayerScoreboardTextBlock" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top">
-        	<Run Text="Add"/>
-        	<LineBreak/>
-        	<Run Text="S"/>
-        	<Run Text="coreboard"/>
-        	<Run Text=" "/>
-        </TextBlock>
-        <TextBlock x:Name="RemovePlayerScoreboardTextBlock" HorizontalAlignment="Right" Margin="0,57,59,0" TextWrapping="Wrap" VerticalAlignment="Top" d:LayoutOverrides="LeftMargin, RightMargin">
-        	<Run Text="Remove "/>
-        	<Run/>
+        <TextBlock x:Name="AddPlayerScoreboardTextBlock" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14">
+        	<Run Text="Add/Remove"/>
         	<LineBreak/>
         	<Run Text="Scoreboard"/>
+        	<Run Text=" "/>
         </TextBlock>
-        <Button x:Name="removePlayerScoreboardButton" Content="-" Margin="0,57,8,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20" HorizontalAlignment="Right" Width="46" Height="40" Click="removePlayerScoreboardButton_Click"/>
+        <Button x:Name="removePlayerScoreboardButton" Content="-" Margin="0,57,126,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20" HorizontalAlignment="Right" Width="46" Height="40" Click="removePlayerScoreboardButton_Click"/>
+        <Button x:Name="ResetButton" Content="Reset Boards" HorizontalAlignment="Left" Margin="197,57,0,0" VerticalAlignment="Top" Height="40" FontSize="13"/>
 
     </Grid>
 </Page>

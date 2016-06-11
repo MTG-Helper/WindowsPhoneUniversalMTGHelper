@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -12,7 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using WindowsUniversalMTGHelper.Views.DeviceFamily_Mobile;
+using Windows.UI.Xaml.Shapes;
+using WindowsUniversalMTGHelper.Model.VisualRepresentations;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,8 +26,6 @@ namespace WindowsUniversalMTGHelper
     public sealed partial class MainPage : Page
     {
 
-        //private PlayerScoreboardPage actualPScoreboardPage;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,7 +33,8 @@ namespace WindowsUniversalMTGHelper
 
         private void AddPlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
         {
-            //PlayerScoreboardPanel.Children.Add(new PlayerScoreboardPage());
+
+            PlayerScoreboardPanel.Children.Add(new PlayerScoreboardPostix().getShape());
         }
 
         private void removePlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
