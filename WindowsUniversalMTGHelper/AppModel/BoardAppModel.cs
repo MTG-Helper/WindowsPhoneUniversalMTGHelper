@@ -10,16 +10,28 @@ namespace WindowsUniversalMTGHelper.AppModel
 {
     public class BoardAppModel
     {
+        private MainPage view;
         private Scoreboard scoreBoard;
 
-        public BoardAppModel()
+        public BoardAppModel(MainPage mainPage)
         {
-            this.scoreBoard = new Scoreboard();
+            this.view = mainPage;
+            this.scoreBoard = new Scoreboard(this);
         }
 
         public Canvas addAPlayerScoreboard()
         {
             return this.scoreBoard.addAPlayerScoreboard().getVisualRepresentation();
+        }
+
+        public void removeAPlayerScoreboard()
+        {
+            this.scoreBoard.removeLastPlayerScoreboard();
+        }
+
+        public MainPage getView()
+        {
+            return this.view;
         }
     }
 }

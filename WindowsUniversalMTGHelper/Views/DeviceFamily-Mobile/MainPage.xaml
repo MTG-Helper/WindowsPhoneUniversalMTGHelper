@@ -12,7 +12,9 @@
             <RowDefinition Height="565*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="PlayerScoreboardPanel" Margin="10,102,10,83"/>
+        <ScrollViewer  Margin="0,94,0,0">
+            <StackPanel x:Name="PlayerScoreboardPanel"/>
+        </ScrollViewer>
         <TextBlock x:Name="ScoreboardTitleTextblock" Margin="116,10,60,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="MTG-Helper Scoreboard" FontWeight="Bold" FontFamily="Arial Black" SelectionHighlightColor="#FF36958C">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -131,6 +131,11 @@ namespace WindowsUniversalMTGHelper.Model.VisualRepresentations
             subFivePpButton.Margin = new Thickness(15, 0, 0, 0);
             subFivePpButton.Click += new RoutedEventHandler(subFivePoisonPointsButtonCLick);
 
+            Button deleteButton = new Button();
+            deleteButton.Name = "DeleteButton";
+            deleteButton.Content = "X";
+            deleteButton.Click += new RoutedEventHandler(deleteButtonCLick);
+
             Canvas.SetTop(playerNameTextBlock, 0);
             Canvas.SetLeft(playerNameTextBlock, 0);
             this.myCanvas.Children.Add(playerNameTextBlock);
@@ -190,6 +195,10 @@ namespace WindowsUniversalMTGHelper.Model.VisualRepresentations
             Canvas.SetTop(subFivePpButton, 112);
             Canvas.SetLeft(subFivePpButton, 165);
             this.myCanvas.Children.Add(subFivePpButton);
+
+            Canvas.SetTop(deleteButton, 0);
+            Canvas.SetLeft(deleteButton, 217);
+            this.myCanvas.Children.Add(deleteButton);
         }
 
         private SolidColorBrush getRamdomColor()
@@ -272,6 +281,11 @@ namespace WindowsUniversalMTGHelper.Model.VisualRepresentations
         {
             this.owner.subFivePoisonPoints();
             updatePoisonPoints();
+        }
+
+        private void deleteButtonCLick(object sender, RoutedEventArgs e)
+        {
+            this.owner.getScoreBoard().getAppModel().getView().removeSpecificPlayerScoreBoard(this.owner);
         }
 
     }

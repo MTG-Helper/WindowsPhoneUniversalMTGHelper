@@ -29,21 +29,40 @@ namespace WindowsUniversalMTGHelper
     {
 
         private BoardAppModel boardAppModel;
+        private List<Canvas> canvasInBoard;
 
         public MainPage()
         {
-            this.boardAppModel = new BoardAppModel();
+            this.boardAppModel = new BoardAppModel(this);
+            this.canvasInBoard = new List<Canvas>();
             this.InitializeComponent();
         }
 
         private void AddPlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
         {
-            PlayerScoreboardPanel.Children.Add(this.boardAppModel.addAPlayerScoreboard());
+            Canvas temp = this.boardAppModel.addAPlayerScoreboard();
+            this.canvasInBoard.Add(temp);
+            this.PlayerScoreboardPanel.Children.Add(temp);
         }
 
         private void removePlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
         {
+            if (this.canvasInBoard.Count > 0)
+            {
+                Canvas temp = this.canvasInBoard.Last();
+                this.PlayerScoreboardPanel.Children.Remove(temp);
+                this.canvasInBoard.Remove(temp);
+                this.boardAppModel.removeAPlayerScoreboard();
+            }
 
         }
+
+        public void removeSpecificPlayerScoreBoard(PlayerScoreboard playerScoreboard)
+        {
+            Canvas temp = playerScoreboard.getVisualRepresentation();
+            this.PlayerScoreboardPanel.Children.Remove(temp);
+            this.canvasInBoard.Remove(temp);
+        }
+        
     }
 }

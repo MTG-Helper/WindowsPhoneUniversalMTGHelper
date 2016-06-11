@@ -15,9 +15,11 @@ namespace WindowsUniversalMTGHelper.Model
         private int lifePoints;
         private int poisonPoints;
         private PlayerScoreboardPostix shape;
+        private Scoreboard board;
 
-        public PlayerScoreboard()
+        public PlayerScoreboard(Scoreboard board)
         {
+            this.board = board;
             this.playerName = "Foo";
             this.lifePoints = 20;
             this.poisonPoints = 0;
@@ -94,8 +96,6 @@ namespace WindowsUniversalMTGHelper.Model
                 this.addOnePoisonPoint();
             }
         }
-
-
 
         /// <summary>
         /// Sub X poison point to the remaining players's life points.
@@ -182,6 +182,11 @@ namespace WindowsUniversalMTGHelper.Model
         public void changeName(string aName)
         {
             this.playerName = aName;
+        }
+
+        public Scoreboard getScoreBoard()
+        {
+            return this.board;
         }
 
     }
