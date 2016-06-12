@@ -95,9 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppModel\BoardAppModel.cs" />
-    <Compile Include="Model\Boards\Scoreboard.cs" />
-    <Compile Include="Model\VisualRepresentations\PlayerScoreboardPostix.cs" />
+    <Compile Include="AppModel\PlayerScoreboardAppModel.cs" />
+    <Compile Include="Views\ObjectVisualsRepresentations\PlayerScoreboardPostix.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

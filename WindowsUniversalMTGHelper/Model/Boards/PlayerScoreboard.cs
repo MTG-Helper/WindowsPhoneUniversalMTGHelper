@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-using WindowsUniversalMTGHelper.Model.VisualRepresentations;
 
 namespace WindowsUniversalMTGHelper.Model
 {
@@ -14,18 +8,13 @@ namespace WindowsUniversalMTGHelper.Model
         private string playerName;
         private int lifePoints;
         private int poisonPoints;
-        private PlayerScoreboardPostix shape;
-        private Scoreboard board;
 
-        public PlayerScoreboard(Scoreboard board)
+        public PlayerScoreboard()
         {
-            this.board = board;
             this.playerName = "Foo";
             this.lifePoints = 20;
             this.poisonPoints = 0;
-            this.shape = new PlayerScoreboardPostix(this);
         }
-
 
         /// <summary>
         /// Returns the remaining players's life points.
@@ -41,14 +30,6 @@ namespace WindowsUniversalMTGHelper.Model
         public void addOneLifePoints()
         {
             this.lifePoints++;
-        }
-
-        /// <summary>
-        /// returns the visual representation for a PlayerScoreboard.
-        /// </summary>
-        public Canvas getVisualRepresentation()
-        {
-            return this.shape.getShape();
         }
 
         /// <summary>
@@ -72,8 +53,6 @@ namespace WindowsUniversalMTGHelper.Model
                 this.addOneLifePoints();
             }
         }
-
-
 
         /// <summary>
         /// Sub X life point to the remaining players's life points.
@@ -182,11 +161,6 @@ namespace WindowsUniversalMTGHelper.Model
         public void changeName(string aName)
         {
             this.playerName = aName;
-        }
-
-        public Scoreboard getScoreBoard()
-        {
-            return this.board;
         }
 
     }

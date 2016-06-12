@@ -7,19 +7,23 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
+using WindowsUniversalMTGHelper.AppModel;
+using WindowsUniversalMTGHelper.Model;
 
-namespace WindowsUniversalMTGHelper.Model.VisualRepresentations
+namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
 {
     public class PlayerScoreboardPostix
     {
         private Canvas myCanvas;
         private PlayerScoreboard owner;
+        private PlayerScoreboardAppModel appModel;
         private TextBlock playerLifePointsNumberTextBlock;
         private TextBlock playerPoisonPointNumberTextBlock;
 
-        public PlayerScoreboardPostix(PlayerScoreboard owner)
+        public PlayerScoreboardPostix(PlayerScoreboardAppModel appModel)
         {
-            this.owner = owner;
+            this.appModel = appModel;
+            this.owner = this.appModel.createNewScoreBoard();
             this.initializeCanvas();
 
         }
@@ -285,7 +289,7 @@ namespace WindowsUniversalMTGHelper.Model.VisualRepresentations
 
         private void deleteButtonCLick(object sender, RoutedEventArgs e)
         {
-            this.owner.getScoreBoard().getAppModel().getView().removeSpecificPlayerScoreBoard(this.owner);
+            this.appModel.removeSpecificPlayerScoreBoard(this.myCanvas);
         }
 
     }
