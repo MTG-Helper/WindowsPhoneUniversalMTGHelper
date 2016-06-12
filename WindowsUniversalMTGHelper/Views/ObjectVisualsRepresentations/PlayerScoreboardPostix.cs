@@ -19,6 +19,7 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
         private PlayerScoreboardAppModel appModel;
         private TextBlock playerLifePointsNumberTextBlock;
         private TextBlock playerPoisonPointNumberTextBlock;
+        private Rectangle color;
 
         public PlayerScoreboardPostix(PlayerScoreboardAppModel appModel)
         {
@@ -30,18 +31,18 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
 
         private void initializeCanvas()
         {
-            Rectangle shape = new Rectangle();
-            shape.Stroke = new SolidColorBrush(Windows.UI.Colors.Black);
-            shape.StrokeThickness = 3;
-            shape.Fill = this.getRamdomColor();
-            shape.Width = 250;
-            shape.Height = 150;
+            this.color = new Rectangle();
+            this.color.Stroke = new SolidColorBrush(Windows.UI.Colors.Black);
+            this.color.StrokeThickness = 3;
+            this.color.Fill = this.getRamdomColor();
+            this.color.Width = 250;
+            this.color.Height = 150;
 
             this.myCanvas = new Canvas();
             this.myCanvas.Width = 250;
             this.myCanvas.Height = 150;
             this.myCanvas.Margin = new Thickness(0, 0, 0, 20);
-            this.myCanvas.Children.Add(shape);
+            this.myCanvas.Children.Add(color);
 
             TextBox playerNameTextBlock = new TextBox();
             playerNameTextBlock.FontSize = 20;
@@ -140,6 +141,11 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             deleteButton.Content = "X";
             deleteButton.Click += new RoutedEventHandler(deleteButtonCLick);
 
+            Button changeColorButton = new Button();
+            changeColorButton.Name = "ChangeColorButton";
+            changeColorButton.Content = "C";
+            changeColorButton.Click += new RoutedEventHandler(changeColorButtonCLick);
+
             Canvas.SetTop(playerNameTextBlock, 0);
             Canvas.SetLeft(playerNameTextBlock, 0);
             this.myCanvas.Children.Add(playerNameTextBlock);
@@ -203,6 +209,10 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             Canvas.SetTop(deleteButton, 0);
             Canvas.SetLeft(deleteButton, 217);
             this.myCanvas.Children.Add(deleteButton);
+
+            Canvas.SetTop(changeColorButton, 0);
+            Canvas.SetLeft(changeColorButton, 187);
+            this.myCanvas.Children.Add(changeColorButton);
         }
 
         private SolidColorBrush getRamdomColor()
@@ -290,6 +300,11 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
         private void deleteButtonCLick(object sender, RoutedEventArgs e)
         {
             this.appModel.removeSpecificPlayerScoreBoard(this.myCanvas);
+        }
+
+        private void changeColorButtonCLick(object sender, RoutedEventArgs e)
+        {
+            this.color.Fill = this.getRamdomColor();
         }
 
     }
