@@ -31,7 +31,7 @@
         	<Run Text=" "/>
         </TextBlock>
         <Button x:Name="removePlayerScoreboardButton" Content="-" Margin="0,57,126,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20" HorizontalAlignment="Right" Width="46" Height="40" Click="removePlayerScoreboardButton_Click"/>
-        <Button x:Name="ResetButton" Content="Reset Boards" HorizontalAlignment="Left" Margin="197,57,0,0" VerticalAlignment="Top" Height="40" FontSize="13"/>
+        <Button x:Name="ResetButton" Content="Reset Boards" HorizontalAlignment="Left" Margin="197,57,0,0" VerticalAlignment="Top" Height="40" FontSize="13" Click="ResetButton_Click"/>
         <Button x:Name="SearchButton" Content="Search Card's" HorizontalAlignment="Left" Margin="10,493,0,0" VerticalAlignment="Top"/>
         <Button x:Name="RollDiceButton" Content="Roll Dice" HorizontalAlignment="Left" Margin="124,493,0,0" VerticalAlignment="Top"/>
         <Button x:Name="CoinButton" Content="Throw a Coin" HorizontalAlignment="Left" Margin="207,493,0,0" VerticalAlignment="Top"/>

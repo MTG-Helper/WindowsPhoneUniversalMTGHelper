@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 using WindowsUniversalMTGHelper.AppModel;
@@ -31,17 +30,17 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
 
         private void initializeCanvas()
         {
+            this.myCanvas = new Canvas();
+            this.myCanvas.Width = 250;
+            this.myCanvas.Height = 150;
+            this.myCanvas.Margin = new Thickness(0, 0, 0, 20);
+
             this.color = new Rectangle();
             this.color.Stroke = new SolidColorBrush(Windows.UI.Colors.Black);
             this.color.StrokeThickness = 3;
             this.color.Fill = this.getRamdomColor();
             this.color.Width = 250;
             this.color.Height = 150;
-
-            this.myCanvas = new Canvas();
-            this.myCanvas.Width = 250;
-            this.myCanvas.Height = 150;
-            this.myCanvas.Margin = new Thickness(0, 0, 0, 20);
             this.myCanvas.Children.Add(color);
 
             TextBox playerNameTextBlock = new TextBox();
@@ -68,13 +67,19 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             this.playerLifePointsNumberTextBlock.FontSize = 20;
             this.playerLifePointsNumberTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
             this.playerLifePointsNumberTextBlock.Margin = new Thickness(15, 0, 0, 0);
-            this.playerLifePointsNumberTextBlock.Text = "" + this.owner.getLifePoints();
+            Binding bindingLifePoints = new Binding();
+            bindingLifePoints.Path = new PropertyPath("lifePoints");
+            bindingLifePoints.Source = this.owner;
+            BindingOperations.SetBinding(this.playerLifePointsNumberTextBlock, TextBlock.TextProperty, bindingLifePoints);
 
             this.playerPoisonPointNumberTextBlock = new TextBlock();
             this.playerPoisonPointNumberTextBlock.FontSize = 20;
             this.playerPoisonPointNumberTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
             this.playerPoisonPointNumberTextBlock.Margin = new Thickness(15, 0, 0, 0);
-            this.playerPoisonPointNumberTextBlock.Text = "" + this.owner.getPoisonPoints();
+            Binding bindingPoisonPoints = new Binding();
+            bindingPoisonPoints.Path = new PropertyPath("poisonPoints");
+            bindingPoisonPoints.Source = this.owner;
+            BindingOperations.SetBinding(this.playerPoisonPointNumberTextBlock, TextBlock.TextProperty, bindingPoisonPoints);
 
             TextBlock lpTextBlock = new TextBlock();
             lpTextBlock.FontSize = 20;
@@ -225,11 +230,9 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             colors.Add(new SolidColorBrush(Windows.UI.Colors.Blue));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.GreenYellow));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.Gray));
-            colors.Add(new SolidColorBrush(Windows.UI.Colors.Indigo));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.Honeydew));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.OrangeRed));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.LemonChiffon));
-            colors.Add(new SolidColorBrush(Windows.UI.Colors.Lavender));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.MistyRose));
             return colors.ElementAt(new Random().Next(0, colors.Count()-1));
         }
@@ -239,62 +242,44 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             return this.myCanvas;
         }
 
-        private void updateLifePoints()
-        {
-            this.playerLifePointsNumberTextBlock.Text = "" + this.owner.getLifePoints();
-        }
-
-        private void updatePoisonPoints()
-        {
-            this.playerPoisonPointNumberTextBlock.Text = "" + this.owner.getPoisonPoints();
-        }
-
         private void addOneLifePointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.addOneLifePoints();
-            updateLifePoints();
         }
 
         private void addFiveLifePointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.addFiveLifePoints();
-            updateLifePoints();
         }
 
         private void subOneLifePointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.subOneLifePoints();
-            updateLifePoints();
         }
 
         private void subFiveLifePointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.subFiveLifePoints();
-            updateLifePoints();
         }
 
         private void addOnePoisonPointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.addOnePoisonPoint();
-            updatePoisonPoints();
         }
 
         private void addFivePoisonPointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.addFivePoisonPoints();
-            updatePoisonPoints();
         }
 
         private void subOnePoisonPointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.subOnePoisonPoint();
-            updatePoisonPoints();
         }
 
         private void subFivePoisonPointsButtonCLick(object sender, RoutedEventArgs e)
         {
             this.owner.subFivePoisonPoints();
-            updatePoisonPoints();
         }
 
         private void deleteButtonCLick(object sender, RoutedEventArgs e)

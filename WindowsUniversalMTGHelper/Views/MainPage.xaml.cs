@@ -39,6 +39,13 @@ namespace WindowsUniversalMTGHelper
         {
             this.PlayerScoreboardPanel.Children.Remove(canvas);
         }
-        
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (object child in PlayerScoreboardPanel.Children)
+            {
+                //(((Canvas)child).Children[0]);
+            }
+        }
     }
 }

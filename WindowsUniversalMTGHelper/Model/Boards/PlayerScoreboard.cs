@@ -1,19 +1,45 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace WindowsUniversalMTGHelper.Model
 {
-    public class PlayerScoreboard
+    public class PlayerScoreboard : INotifyPropertyChanged
     {
 
-        private string playerName;
-        private int lifePoints;
-        private int poisonPoints;
+        public string playerName { get; set; }
+        public int lifePoints { get; set; }
+        public int poisonPoints { get; set; }
 
         public PlayerScoreboard()
         {
             this.playerName = "Foo";
             this.lifePoints = 20;
             this.poisonPoints = 0;
+        }
+
+        /// <summary>
+        /// The Property Changed event.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Handle's the propertyChanged.
+        /// </summary>
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        /// <summary>
+        /// Notifies the listener that property has changed.
+        /// </summary>
+        private void notifyPropertyChanged(String propertyName)
+        {
+            this.OnPropertyChanged(propertyName);
         }
 
         /// <summary>
@@ -30,6 +56,7 @@ namespace WindowsUniversalMTGHelper.Model
         public void addOneLifePoints()
         {
             this.lifePoints++;
+            this.notifyPropertyChanged("lifePoints");
         }
 
         /// <summary>
@@ -40,6 +67,7 @@ namespace WindowsUniversalMTGHelper.Model
             if (this.getLifePoints() > 0)
             {
                 this.lifePoints--;
+                this.notifyPropertyChanged("lifePoints");
             }
         }
 
@@ -93,6 +121,7 @@ namespace WindowsUniversalMTGHelper.Model
         public void addFiveLifePoints()
         {
             this.addXLifePoints(5);
+            this.notifyPropertyChanged("lifePoints");
         }
 
         /// <summary>
@@ -101,6 +130,7 @@ namespace WindowsUniversalMTGHelper.Model
         public void subFiveLifePoints()
         {
             this.subXLifePoints(5);
+            this.notifyPropertyChanged("lifePoints");
         }
 
 
@@ -118,6 +148,7 @@ namespace WindowsUniversalMTGHelper.Model
         public void addOnePoisonPoint()
         {
             this.poisonPoints++;
+            this.notifyPropertyChanged("poisonPoints");
         }
 
         /// <summary>
@@ -128,6 +159,7 @@ namespace WindowsUniversalMTGHelper.Model
             if(this.getPoisonPoints() > 0)
             {
                 this.poisonPoints--;
+                this.notifyPropertyChanged("poisonPoints");
             }
         }
 
@@ -137,6 +169,7 @@ namespace WindowsUniversalMTGHelper.Model
         public void addFivePoisonPoints()
         {
             this.addXPoisonPoints(5);
+            this.notifyPropertyChanged("poisonPoints");
         }
 
         /// <summary>
@@ -145,6 +178,7 @@ namespace WindowsUniversalMTGHelper.Model
         public void subFivePoisonPoints()
         {
             this.subXPoisonPoints(5);
+            this.notifyPropertyChanged("poisonPoints");
         }
 
         /// <summary>
