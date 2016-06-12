@@ -197,5 +197,13 @@ namespace WindowsUniversalMTGHelper.Model
             this.playerName = aName;
         }
 
+        public void reset()
+        {
+            this.lifePoints = 20;
+            this.poisonPoints = 0;
+            this.notifyPropertyChanged("lifePoints");
+            this.notifyPropertyChanged("poisonPoints");
+        }
+
     }
 }

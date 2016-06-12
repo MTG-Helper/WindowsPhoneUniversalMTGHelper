@@ -34,6 +34,7 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             this.myCanvas.Width = 250;
             this.myCanvas.Height = 150;
             this.myCanvas.Margin = new Thickness(0, 0, 0, 20);
+            this.myCanvas.DataContext = this.owner;
 
             this.color = new Rectangle();
             this.color.Stroke = new SolidColorBrush(Windows.UI.Colors.Black);
@@ -43,13 +44,16 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             this.color.Height = 150;
             this.myCanvas.Children.Add(color);
 
-            TextBox playerNameTextBlock = new TextBox();
-            playerNameTextBlock.FontSize = 20;
-            playerNameTextBlock.BorderThickness = new Thickness(0, 0, 0, 0);
-            playerNameTextBlock.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
-            playerNameTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
-            playerNameTextBlock.Margin = new Thickness(5, 0, 0, 0);
-            playerNameTextBlock.Text = this.owner.getPlayerName();
+            TextBox playerNameTextBox = new TextBox();
+            playerNameTextBox.FontSize = 20;
+            playerNameTextBox.BorderThickness = new Thickness(0, 0, 0, 0);
+            playerNameTextBox.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+            playerNameTextBox.HorizontalAlignment = HorizontalAlignment.Center;
+            playerNameTextBox.Margin = new Thickness(5, 0, 0, 0);
+            Binding bindingName = new Binding();
+            bindingName.Path = new PropertyPath("playerName");
+            bindingName.Source = this.owner;
+            BindingOperations.SetBinding(playerNameTextBox, TextBox.TextProperty, bindingName);
 
             TextBlock playerLifePointsTextBlock = new TextBlock();
             playerLifePointsTextBlock.FontSize = 20;
@@ -151,9 +155,9 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             changeColorButton.Content = "C";
             changeColorButton.Click += new RoutedEventHandler(changeColorButtonCLick);
 
-            Canvas.SetTop(playerNameTextBlock, 0);
-            Canvas.SetLeft(playerNameTextBlock, 0);
-            this.myCanvas.Children.Add(playerNameTextBlock);
+            Canvas.SetTop(playerNameTextBox, 0);
+            Canvas.SetLeft(playerNameTextBox, 0);
+            this.myCanvas.Children.Add(playerNameTextBox);
 
             Canvas.SetTop(playerLifePointsTextBlock, 25);
             Canvas.SetLeft(playerLifePointsTextBlock, 0);

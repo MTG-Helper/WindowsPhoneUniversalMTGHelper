@@ -3,6 +3,7 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using WindowsUniversalMTGHelper.AppModel;
+using WindowsUniversalMTGHelper.Model;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -44,7 +45,7 @@ namespace WindowsUniversalMTGHelper
         {
             foreach (object child in PlayerScoreboardPanel.Children)
             {
-                //(((Canvas)child).Children[0]);
+                ((PlayerScoreboard)((Canvas)child).DataContext).reset();
             }
         }
     }
