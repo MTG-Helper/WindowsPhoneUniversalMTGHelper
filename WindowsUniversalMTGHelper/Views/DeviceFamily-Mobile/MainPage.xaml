@@ -7,8 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Width="317.667" Height="543">
 
-    <Grid Background="Green">
-        <Grid.RowDefinitions>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource ="/Resources/greenBoard.jpg" Stretch="Fill"></ImageBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
             <RowDefinition Height="565*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
