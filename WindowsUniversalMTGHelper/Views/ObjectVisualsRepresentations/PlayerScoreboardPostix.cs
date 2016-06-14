@@ -5,7 +5,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Shapes;
 using WindowsUniversalMTGHelper.AppModel;
 using WindowsUniversalMTGHelper.Model;
@@ -54,6 +53,7 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             this.playerNameTextBox.HorizontalAlignment = HorizontalAlignment.Center;
             this.playerNameTextBox.Margin = new Thickness(5, 0, 0, 0);
             this.playerNameTextBox.TextChanged += new TextChangedEventHandler(ChangePositionOnRename);
+            this.owner.changeName(this.getRamdomName());
             Binding bindingName = new Binding();
             bindingName.Path = new PropertyPath("playerName");
             bindingName.Source = this.owner;
@@ -242,6 +242,42 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             colors.Add(new SolidColorBrush(Windows.UI.Colors.MistyRose));
             colors.Add(new SolidColorBrush(Windows.UI.Colors.MediumSeaGreen));
             return colors.ElementAt(new Random().Next(0, colors.Count()-1));
+        }
+
+        private String getRamdomName()
+        {
+            List<String> names = new List<String>();
+            names.Add("Ajani Goldmane");
+            names.Add("Ashiok");
+            names.Add("Nicol Bolas");
+            names.Add("Chandra Nalaar");
+            names.Add("Dack Fayden");
+            names.Add("Daretti");
+            names.Add("Domri Rade");
+            names.Add("Elspeth Tirel");
+            names.Add("Garruk Wildspeaker");
+            names.Add("Gideon Jura");
+            names.Add("Jace Beleren");
+            names.Add("Karn");
+            names.Add("Kiora");
+            names.Add("Koth");
+            names.Add("Liliana Vess");
+            names.Add("Nahiri");
+            names.Add("Narset");
+            names.Add("Nissa Revane");
+            names.Add("Ob Nixilis");
+            names.Add("Ral Zarek");
+            names.Add("Sarkhan Vol");
+            names.Add("Sorin Markov");
+            names.Add("Teferi ");
+            names.Add("Tezzeret");
+            names.Add("Tibalt");
+            names.Add("Tamiyo");
+            names.Add("Ugin");
+            names.Add("Venser");
+            names.Add("Vraska");
+            names.Add("Xenagos");
+            return names.ElementAt(new Random().Next(0, names.Count() - 1));
         }
 
         public Canvas getShape()
