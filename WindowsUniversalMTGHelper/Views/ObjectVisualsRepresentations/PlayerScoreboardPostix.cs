@@ -35,7 +35,7 @@ namespace WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations
             this.myCanvas = new Canvas();
             this.myCanvas.Width = 250;
             this.myCanvas.Height = 150;
-            this.myCanvas.Margin = new Thickness(0, 20, 0, 0);
+            this.myCanvas.Margin = new Thickness(0, 0, 0, 20);
             this.myCanvas.DataContext = this.owner;
 
             this.color = new Rectangle();
