@@ -15,7 +15,7 @@
             <RowDefinition Height="565*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <ScrollViewer  Margin="0,115,0,48">
+        <ScrollViewer  Margin="0,115,0,70">
             <StackPanel x:Name="PlayerScoreboardPanel"/>
         </ScrollViewer>
         <TextBlock x:Name="ScoreboardTitleTextblock" Margin="116,10,60,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="MTG-Helper Scoreboard" FontWeight="Bold" FontFamily="Arial Black" SelectionHighlightColor="#FF36958C">
