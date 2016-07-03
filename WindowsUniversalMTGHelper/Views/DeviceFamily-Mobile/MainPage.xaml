@@ -11,12 +11,11 @@
         <Grid.Background>
             <ImageBrush ImageSource ="/Resources/greenBoard.jpg" Stretch="Fill"></ImageBrush>
             </Grid.Background>
-            <Grid.RowDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="565*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <ScrollViewer  Margin="0,115,0,70">
-            <StackPanel x:Name="PlayerScoreboardPanel"/>
+        <ScrollViewer x:Name="scrollViewer" Margin="0,115,0,70">
         </ScrollViewer>
         <TextBlock x:Name="ScoreboardTitleTextblock" Margin="116,10,60,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="MTG-Helper Scoreboard" FontWeight="Bold" FontFamily="Arial Black" SelectionHighlightColor="#FF36958C">
             <TextBlock.Foreground>
@@ -36,8 +35,8 @@
         <Button x:Name="removePlayerScoreboardButton" Content="-" Margin="0,57,126,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="20" HorizontalAlignment="Right" Width="46" Height="40" Click="removePlayerScoreboardButton_Click"/>
         <Button x:Name="ResetButton" Content="Reset Boards" HorizontalAlignment="Left" Margin="197,57,0,0" VerticalAlignment="Top" Height="40" FontSize="13" Click="ResetButton_Click"/>
         <Button x:Name="SearchButton" Content="Search Card's" HorizontalAlignment="Left" Margin="10,493,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="RollDiceButton" Content="Roll Dice" HorizontalAlignment="Left" Margin="124,493,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="CoinButton" Content="Throw a Coin" HorizontalAlignment="Left" Margin="207,493,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="RollDiceButton" Content="Roll Dice" HorizontalAlignment="Left" Margin="124,493,0,0" VerticalAlignment="Top" Click="RollDiceButton_Click"/>
+        <Button x:Name="CoinButton" Content="Throw a Coin" HorizontalAlignment="Left" Margin="207,493,0,0" VerticalAlignment="Top" Click="CoinButton_Click"/>
 
     </Grid>
 </Page>

@@ -96,6 +96,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppModel\PlayerScoreboardAppModel.cs" />
+    <Compile Include="Model\extras\Coin.cs" />
+    <Compile Include="Model\extras\Dice.cs" />
+    <Compile Include="Views\ObjectVisualsRepresentations\TokenGenerator.cs" />
     <Compile Include="Views\ObjectVisualsRepresentations\PlayerScoreboardPostix.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -118,7 +121,15 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Resources\diceFive.png" />
+    <Content Include="Resources\diceFour.png" />
+    <Content Include="Resources\diceSix.png" />
+    <Content Include="Resources\diceThree.png" />
+    <Content Include="Resources\diceTwo.png" />
+    <Content Include="Resources\diceOne.png" />
     <Content Include="Resources\greenBoard.jpg" />
+    <Content Include="Resources\head.png" />
+    <Content Include="Resources\tail.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

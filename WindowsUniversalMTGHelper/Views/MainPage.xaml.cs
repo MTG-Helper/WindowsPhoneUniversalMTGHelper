@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using WindowsUniversalMTGHelper.AppModel;
 using WindowsUniversalMTGHelper.Model;
+using WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -16,18 +17,36 @@ namespace WindowsUniversalMTGHelper
     {
 
         private PlayerScoreboardAppModel boardAppModel;
+        private StackPanel PlayerScoreboardPanel;
 
         public MainPage()
         {
-            this.boardAppModel = new PlayerScoreboardAppModel(this);
-            this.InitializeComponent();
+            this.initializeComponents();
         }
 
+        /// <summary>
+        /// Initialize the components for this class.
+        /// </summary>
+        private void initializeComponents()
+        {
+            this.InitializeComponent();
+            this.boardAppModel = new PlayerScoreboardAppModel(this);
+            this.PlayerScoreboardPanel = new StackPanel();
+            this.scrollViewer.Content = this.PlayerScoreboardPanel;
+
+        }
+
+        /// <summary>
+        /// Add one player scoreboard on screen.
+        /// </summary>
         private void AddPlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
         {
             this.PlayerScoreboardPanel.Children.Add(this.boardAppModel.addAPlayerScoreboard());
         }
 
+        /// <summary>
+        /// Remove the last player scoreboard on screen.
+        /// </summary>
         private void removePlayerScoreboardButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.PlayerScoreboardPanel.Children.Count > 0)
@@ -36,17 +55,48 @@ namespace WindowsUniversalMTGHelper
             }
         }
 
+        /// <summary>
+        /// Remove the selected player scoreboard on screen.
+        /// </summary>
         public void removeSpecificPlayerScoreBoard(Canvas canvas)
         {
             this.PlayerScoreboardPanel.Children.Remove(canvas);
         }
 
+        /// <summary>
+        /// Reset all player scoreboard on screen.
+        /// </summary>
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
             foreach (object child in PlayerScoreboardPanel.Children)
             {
                 ((PlayerScoreboard)((Canvas)child).DataContext).reset();
             }
+        }
+
+        /// <summary>
+        /// Comeback to the player scoreboard view.
+        /// </summary>
+        public void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.scrollViewer.Content = this.PlayerScoreboardPanel;
+        }
+
+        /// <summary>
+        /// Flip a coin.
+        /// </summary>
+        private void CoinButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.scrollViewer.Content = (new TokenGenerator(this)).flipCoin();
+
+        }
+
+        /// <summary>
+        /// Roll a dice.
+        /// </summary>
+        private void RollDiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.scrollViewer.Content = (new TokenGenerator(this)).rollDice();
         }
     }
 }
