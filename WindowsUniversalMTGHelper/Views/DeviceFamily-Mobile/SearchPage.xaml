@@ -1,0 +1,52 @@
+﻿<Page
+    x:Class="WindowsUniversalMTGHelper.Views.SearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WindowsUniversalMTGHelper.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="SearchPageGrid">
+        <Grid.Background>
+            <ImageBrush ImageSource ="/Resources/logoMTG.jpg" Stretch="Fill"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <AutoSuggestBox Name="MyAutoSuggestBox"
+                        HorizontalAlignment="Left"
+                        QueryIcon="Find"
+                        PlaceholderText="Nombre de la Carta"
+                        Width="320"
+                        TextChanged="MyAutoSuggestBox_TextChanged"
+                        AutoMaximizeSuggestionArea="True"
+                        Visibility="Visible"
+                        QuerySubmitted="MyAutoSuggestBox_QuerySubmitted"/>
+
+        <ListView Name="myListBox" 
+                 Grid.Row="2" 
+                 Visibility="Visible" 
+                 SelectionMode="None"
+                 IsItemClickEnabled="True"
+                 SelectionChanged="myListBox_SelectionChanged"
+                 Background="White" Opacity="0.6" FontWeight="Bold" ItemClick="myListBox_ItemClick"/>
+
+        <StackPanel Name="myStackPanel" Visibility="Collapsed" Grid.Row="2" Orientation="Vertical" Background="Gray"
+                    Opacity="0.88"/>
+        <Image  Name="MyImage" 
+                Height="400"  
+                Stretch="Uniform" 
+                HorizontalAlignment="Left" 
+                Visibility="Collapsed" 
+                Grid.Row="2" 
+                PointerPressed="MyImage_PointerPressed" 
+                ImageOpened="MyImage_ImageOpened"/>
+        <StackPanel Name="tmpPanel" Visibility="Collapsed" Grid.Row="1">
+            <TextBlock Text="Loading..." FontSize="40" Margin="0,40,0,0"/>
+            <ProgressRing IsActive="True" Width="160" Height="160" Margin="0,60,0,60"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using WindowsUniversalMTGHelper.AppModel;
 using WindowsUniversalMTGHelper.Model;
+using WindowsUniversalMTGHelper.Views;
 using WindowsUniversalMTGHelper.Views.ObjectVisualsRepresentations;
 
 // La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -22,6 +23,7 @@ namespace WindowsUniversalMTGHelper
         public MainPage()
         {
             this.initializeComponents();
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Required;
         }
 
         /// <summary>
@@ -97,6 +99,11 @@ namespace WindowsUniversalMTGHelper
         private void RollDiceButton_Click(object sender, RoutedEventArgs e)
         {
             this.scrollViewer.Content = (new TokenGenerator(this)).rollDice();
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SearchPage));
         }
     }
 }
