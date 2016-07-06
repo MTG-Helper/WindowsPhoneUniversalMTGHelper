@@ -104,6 +104,7 @@ namespace WindowsUniversalMTGHelper.Model.extras
                 default:
                     return "One";
             }
+            
         }
 
     }

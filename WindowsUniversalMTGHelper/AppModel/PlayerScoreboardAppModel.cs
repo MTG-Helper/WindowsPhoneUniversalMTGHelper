@@ -32,6 +32,7 @@ namespace WindowsUniversalMTGHelper.AppModel
         {
             return new PlayerScoreboard();
         }
+        
     }
 
 }

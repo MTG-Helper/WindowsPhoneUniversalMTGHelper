@@ -82,6 +82,12 @@ namespace WindowsUniversalMTGHelper.Views
 
         private void MostrarDatosDeLaCartaSeleccionada(string nombreDeLaCarta)
         {
+            //Stats
+            App.stats.SearchedCard();
+            App.stats.Post();
+            App.stats.Reset();
+            //
+
             MyImage.Visibility = Visibility.Collapsed;
             MyAutoSuggestBox.Visibility = Visibility.Collapsed;
             CloseListOpenMyPanel();
@@ -202,6 +208,7 @@ namespace WindowsUniversalMTGHelper.Views
 
         private void LoadImage(string multiverseid)
         {
+
             var url = CreateUrlWithId(multiverseid);
             Uri uri = new Uri(url, UriKind.Absolute);
             //IRandomAccessStream a = await RandomAccessStreamReference.CreateFromUri(uri).OpenReadAsync();
@@ -209,6 +216,7 @@ namespace WindowsUniversalMTGHelper.Views
             //await i.SetSourceAsync(a);
             //MyImage.Source = i;
             MyImage.Source = new BitmapImage(uri);
+            
         }
 
         static string CreateUrlWithId(string multiverseid)

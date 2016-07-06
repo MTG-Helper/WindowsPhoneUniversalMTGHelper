@@ -98,6 +98,7 @@
     <Compile Include="AppModel\PlayerScoreboardAppModel.cs" />
     <Compile Include="Model\extras\Coin.cs" />
     <Compile Include="Model\extras\Dice.cs" />
+    <Compile Include="Model\extras\Stats.cs" />
     <Compile Include="Views\ObjectVisualsRepresentations\TokenGenerator.cs" />
     <Compile Include="Views\ObjectVisualsRepresentations\PlayerScoreboardPostix.cs" />
     <Compile Include="Views\MainPage.xaml.cs">

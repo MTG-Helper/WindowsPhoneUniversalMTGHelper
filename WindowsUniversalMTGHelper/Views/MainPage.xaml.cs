@@ -81,6 +81,9 @@ namespace WindowsUniversalMTGHelper
         /// </summary>
         public void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            //Stats
+            //
+
             this.scrollViewer.Content = this.PlayerScoreboardPanel;
         }
 
@@ -89,6 +92,13 @@ namespace WindowsUniversalMTGHelper
         /// </summary>
         private void CoinButton_Click(object sender, RoutedEventArgs e)
         {
+
+            //Stats
+            App.stats.Coin();
+            App.stats.Post();
+            App.stats.Reset();
+            //
+
             this.scrollViewer.Content = (new TokenGenerator(this)).flipCoin();
 
         }
@@ -98,12 +108,21 @@ namespace WindowsUniversalMTGHelper
         /// </summary>
         private void RollDiceButton_Click(object sender, RoutedEventArgs e)
         {
+
+            //Stats
+            App.stats.Dice();
+            App.stats.Post();
+            App.stats.Reset();
+            //
+
             this.scrollViewer.Content = (new TokenGenerator(this)).rollDice();
+
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SearchPage));
         }
+        
     }
 }

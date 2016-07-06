@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WindowsUniversalMTGHelper.Model.extras;
 
 namespace WindowsUniversalMTGHelper
 {
@@ -22,6 +24,8 @@ namespace WindowsUniversalMTGHelper
     /// </summary>
     sealed partial class App : Application
     {
+        internal static Stats stats = new Stats();
+
         /// <summary>
         /// Inicializa el objeto de aplicación Singleton. Esta es la primera línea de código creado
         /// ejecutado y, como tal, es el equivalente lógico de main() o WinMain().
